@@ -7,7 +7,8 @@ import AddNew from './components/table/addNew';
 import ProductsIndex from './components/product/index';
 import Catergory from './components/product/page/category';
 import PostPage from './components/product/page/postPage';
-import NotFound from './components/product/page/404'
+import NotFound from './components/product/page/404';
+import ProductsDtailContainer from './components/containers/detailContainer'
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
 			<Route path='/login' component={Login} />
 			<Route path='/edit/:id' component={EditBook}/>
 			<Route path='/addnew' component={AddNew} />
-			<Route path='/shop' component={ProductsIndex}/>
+			<Route exact path='/product' component={ProductsIndex}/>
 			<Route path='/category' component={Catergory}/>
 			<Route path='/post-page' component={PostPage}/>
+			<Route path='/product/:id' component={ProductsDtailContainer}/>
 			<Route component={NotFound}/>
 		</Switch>
 	</Router>

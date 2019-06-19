@@ -10,7 +10,7 @@ const menus = [
 	},
 	{
 		label: "Cart Pages",
-		to : "/shop",
+		to : "/product",
 		icon: "fa fa-shopping-cart",
 		activeOnlyExact: false
 	},
@@ -26,7 +26,6 @@ const menus = [
 		icon: "fa fa-diamond",
 		activeOnlyExact: false
 	},
-
 ]
 
 const MenuLink = ({label, to , icon, activeOnlyExact}) =>{
@@ -52,10 +51,9 @@ class MenuItem extends Component {
 	showMenus = (menus) =>{
 		var result = [];
 		if( menus.length > 0){
-			console.log("sdd")
 			result = menus.map((item, index) =>{
 				return(
-					<MenuLink label ="Trang Chủ"
+					<MenuLink
 						key={index}
 						to={item.to}
 						icon={item.icon} 

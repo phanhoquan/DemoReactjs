@@ -15,7 +15,9 @@ class HomeMain extends Component {
 	}
 
 	componentWillMount() {
-		if (localStorage.length === 0) {
+		
+		var data = localStorage.getItem('auth');
+		if (!data) {
 			window.location.href = '/login';
 		} else {
 			this.setState({

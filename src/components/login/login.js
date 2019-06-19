@@ -11,12 +11,6 @@ class Login extends Component {
 		}
 	}
 
-	componentWillMount() {
-		if (localStorage.length > 0) {
-			window.location.href = '/';
-		}
-	}
-
 	handleChangeData = (data) => {
 		this.setState({
 			dataLogin: {
@@ -57,7 +51,7 @@ class Login extends Component {
 								onChange={(e) => this.handleChangeData({username: e.target.value})}
 							/>
 						</div>	
-						<div className="form-groups">
+						<div className="form-groups d-flex form-email align-self-center b">
 							<input
 								type="password"
 								className="fadeIn third form-control"

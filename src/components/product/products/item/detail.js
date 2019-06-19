@@ -24,7 +24,8 @@ class ProductItem extends Component {
 		this.props.onChangMessage(Message.MSG_ADD_TO_CART_SUCCESS);
 	}
 	render() {
-		const {products} = this.props;
+		var products = this.props.products[0];
+
 		return (
 			<div className="col-lg-4 col-md-6 mb-r">
 				<div className="card text-center card-cascade narrower">
