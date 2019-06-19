@@ -8,7 +8,8 @@ import ProductsIndex from './components/product/index';
 import Catergory from './components/product/page/category';
 import PostPage from './components/product/page/postPage';
 import NotFound from './components/product/page/404';
-import ProductsDtailContainer from './components/containers/detailContainer'
+import ProductsDtailContainer from './components/containers/detailContainer';
+import Register from './components/registers/register';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
 			<Route path='/category' component={Catergory}/>
 			<Route path='/post-page' component={PostPage}/>
 			<Route path='/product/:id' component={ProductsDtailContainer}/>
+			<Route path='/register' component={Register}/>
 			<Route component={NotFound}/>
 		</Switch>
 	</Router>

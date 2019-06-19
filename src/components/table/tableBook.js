@@ -49,6 +49,7 @@ class TableBook extends Component{
 
 	_renderTableBook = () =>{
 		const { listBook, page, limit } = this.state.dataBook;
+		var data = localStorage.getItem('auth');
 		if(listBook.length === 0){
 			let dataNo = this._renderNoData();
 			return dataNo;
@@ -60,7 +61,7 @@ class TableBook extends Component{
 					<td>{limit * (page - 1) + index + 1}</td>
 					<td>{item.name}</td>
 					<td>{item.author}</td>
-					{this.props.isLogin && <td>{this._renderButtonEdit(item.id, item.name)}{this._renderButtonDelete(item.id)} </td>}
+					{data && <td>{this._renderButtonEdit(item.id, item.name)}{this._renderButtonDelete(item.id)} </td>}
 				</tr>
 			)
 			return item;
@@ -109,13 +110,16 @@ class TableBook extends Component{
 	}
 
 	_renderBtnAddNew = () =>{
-		return(
-			<Link to={"/addnew/"}>
-				<button
-					className="btn btn-primary btn-sm my-3"
-				>ADD NEW</button>
-			</Link>
-		);
+		var data = localStorage.getItem('auth');
+		if(data){
+			return(
+				<Link to={"/addnew/"}>
+					<button
+						className="btn btn-primary btn-sm my-3"
+					>ADD NEW</button>
+				</Link>
+			);
+		}
 	}
 
 	handleChangePage = (page) => {
@@ -200,7 +204,7 @@ class TableBook extends Component{
 	
 
 	render(){
-
+		var data = localStorage.getItem('auth');
 		return(
 			<div>
 				{this._renderBtnAddNew()}
@@ -213,7 +217,7 @@ class TableBook extends Component{
 							<th>No{this._renderIconSort()}</th>
 							<th>Name{this._renderIconSort()}</th>
 							<th>Author{this._renderIconSort()}</th>
-							{this.props.isLogin? <th>Action</th>: ""}
+							{data &&<th>Action</th>}
 						</tr>
 					</thead>
 					<tbody>

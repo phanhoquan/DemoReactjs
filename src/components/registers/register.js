@@ -1,36 +1,42 @@
 import React, { Component } from 'react';
 import './../../public/css/login.css';
-import { getUser } from '../../services/auth'
-import '../../public/css/jquery.fancybox.min.css';
-import { Link } from 'react-router-dom';
 
-class Login extends Component {
+class Register extends Component {
 	state = {
-		dataLogin: {
-			username: localStorage.username || "",
-			password: localStorage.password || "",
+		dataRegister: {
+			username: "",
+			password: "",
+			comfirmPassword: ""
 		}
 	}
 
 	handleChangeData = (data) => {
+		console.log(data);
 		this.setState({
-			dataLogin: {
-				...this.state.dataLogin,
+			dataRegister: {
+				...this.state.dataRegister,
 				...data,
 			},			
 		});
 	}
 
 	submitForm = async () =>{
-		let dataForm = JSON.stringify(this.state.dataLogin);
+		
+		let dataForm = JSON.stringify(this.state.dataRegister);
 		dataForm = JSON.parse(dataForm);
-		let dataUser = await getUser(dataForm);
-		 if(dataUser.length === 0){
-			alert("Error Username or Password");
-		 }else{
-			localStorage.setItem('auth', dataUser[0].username);
-			window.location.href = '/';
-		 }
+		console.log(dataForm, "sadsad");
+		if(dataForm.password === dataForm.comfirmPassword){
+			console.log("s");
+		}else{
+			alert("Password not matched");
+		}
+		// // let dataUser = await getUser(dataForm);
+		// if(dataUser.length === 0){
+		// 	alert("Error Username or Password");
+		// }else{
+		// 	localStorage.setItem('auth', dataUser[0].username);
+		// 	window.location.href = '/';
+		// }
 	}
 
   	render() {
@@ -40,7 +46,7 @@ class Login extends Component {
 				<div className="wrapper fadeInDown">
 					<div id="formContent">
 						<div className="fadeIn first">
-							<h1>Login</h1>
+							<h1>Registes</h1>
 						</div>
 						<div className="form-groups d-flex form-email align-self-center b">
 							<input
@@ -48,7 +54,7 @@ class Login extends Component {
 								className="fadeIn second form-control"
 								name="username"
 								placeholder="Username"
-								value={this.state.dataLogin.username}
+								value={this.state.dataRegister.username}
 								onChange={(e) => this.handleChangeData({username: e.target.value})}
 							/>
 						</div>	
@@ -60,8 +66,20 @@ class Login extends Component {
 								minLength="6"
 								maxLength="16"
 								placeholder="Password"
-								value={this.state.dataLogin.password}
+								value={this.state.dataRegister.password}
 								onChange={(e) => this.handleChangeData({password: e.target.value})}
+							/>
+						</div>
+						<div className="form-groups d-flex form-email align-self-center b">
+							<input
+								type="password"
+								className="fadeIn third form-control"
+								name="password"
+								minLength="6"
+								maxLength="16"
+								placeholder="Comfirm Password"
+								value={this.state.dataRegister.comfirmPassword}
+								onChange={(e) => this.handleChangeData({comfirmPassword: e.target.value})}
 							/>
 						</div>
 						<div className="form-groups mt-2 mb-4">
@@ -69,10 +87,9 @@ class Login extends Component {
 							 className="fadeIn fourth btn-default m-0 w-100"
 							 onClick = {this.submitForm}
 							>
-								Login
+								Register
 							</button>
 						</div>
-						<Link to="/register" className="dropdown-item waves-effect waves-light">Register</Link>
 					</div>
 				</div>
 			</div>
@@ -80,4 +97,4 @@ class Login extends Component {
   	}
 }
 
-export default Login;
+export default Register;

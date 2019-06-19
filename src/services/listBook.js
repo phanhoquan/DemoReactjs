@@ -114,7 +114,6 @@ export function update(id, name, author){
 export function deleteBook(id){
 	var data = list;
 	var index = data.findIndex((obj => obj.id === parseInt(id)));
-	
 	data.splice(parseInt(index), 1);
 	return data;
 }
@@ -126,13 +125,11 @@ export function editBook(id){
 }
 
 export function sortBy(page, limit){
-
 	if (!page || !limit) {
 		page = 1;
 		limit = 5;
 	}
 	var data = list;
-	
 	var sortBy = data.sort(() => -1);
 	return {
 		data: sortBy.slice((page - 1) * limit, page * limit),
@@ -145,17 +142,14 @@ export function searchData(text, page, limit){
 		page = 1;
 		limit = 5;
 	}
-
 	var data = list;
-	var value = text.toLowerCase().trim();
+	var value = text ===undefined ? "":  text.toLowerCase().trim();
 	data = data.filter(item => item.name.toLowerCase().includes(value));
-
 	return {
 		data: data.slice((page - 1) * limit, page * limit),
 		totalPage: data.length,
 	};
 }
-
 
 export function AddNewData(text){
 	var data = list;

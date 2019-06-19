@@ -28,6 +28,10 @@ h2 {
 .breadcrumb.header-breadcrumb .active.breadcrumb-item a{
 	color: #ff4f5e;
 }
+.breadcrumb.header-breadcrumb .breadcrumb-item a i{
+	margin-right: 6px;
+	font-size: 14px;
+}
 
 a.btn-default {
 	color: #fff !important;
@@ -120,7 +124,7 @@ h2.active {
 .btn{
 	padding: 0.85rem 1.13rem !important;
 }
-input[type=text], .form-control {
+input[type=text],input[type=password], .form-control {
 	text-align: left;
 	background-color: #f6f6f6;
 	border: none;
