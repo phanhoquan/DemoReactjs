@@ -11,7 +11,6 @@ class Register extends Component {
 	}
 
 	handleChangeData = (data) => {
-		console.log(data);
 		this.setState({
 			dataRegister: {
 				...this.state.dataRegister,
@@ -24,9 +23,9 @@ class Register extends Component {
 		
 		let dataForm = JSON.stringify(this.state.dataRegister);
 		dataForm = JSON.parse(dataForm);
-		console.log(dataForm, "sadsad");
-		if(dataForm.password === dataForm.comfirmPassword){
-			console.log("s");
+		if(!dataForm.password || !dataForm.comfirmPassword || !dataForm.username){
+			alert("Required Filed");
+		}else if(dataForm.password === dataForm.comfirmPassword){
 		}else{
 			alert("Password not matched");
 		}

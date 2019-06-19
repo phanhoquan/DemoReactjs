@@ -113,7 +113,7 @@ class TableBook extends Component{
 		var data = localStorage.getItem('auth');
 		if(data){
 			return(
-				<Link to={"/addnew/"}>
+				<Link to={"/addnew"}>
 					<button
 						className="btn btn-primary btn-sm my-3"
 					>ADD NEW</button>
