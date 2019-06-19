@@ -3,7 +3,7 @@ import { Link , Route} from 'react-router-dom';
 
 const menus = [
 	{
-		label: "Trang Chủ",
+		label: "Home Pages",
 		to : "/",
 		icon: "fa fa-dashboard",
 		activeOnlyExact: true
